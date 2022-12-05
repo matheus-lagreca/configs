@@ -38,6 +38,10 @@ return require('packer').startup(function(use)
             "MunifTanjim/nui.nvim",
         }
     }
+
+    -- qol
+    use 'unblevable/quick-scope'
+
     -- others
     use {
         'folke/trouble.nvim',
