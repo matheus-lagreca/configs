@@ -15,9 +15,15 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
     use 'williamboman/mason.nvim'
     use 'nvim-treesitter/nvim-treesitter'
-    use 'ms-jpq/coq_nvim'
     use('MunifTanjim/prettier.nvim')
     use('jose-elias-alvarez/null-ls.nvim')
+
+    -- Lsp autocomplete
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
 
     -- git
     use 'f-person/git-blame.nvim'
