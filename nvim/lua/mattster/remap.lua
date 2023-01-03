@@ -9,6 +9,31 @@ vim.keymap.set("n", "<leader>q", "<cmd>q!<CR>")
 vim.keymap.set("n", "<leader>oS", "<cmd>PackerSync<CR>")
 vim.keymap.set("n", "<leader>os", "<cmd>so<CR>")
 
+-- Windows
+vim.keymap.set("n", "<C-l>", "<C-w>l<CR>")
+vim.keymap.set("n", "<C-h>", "<C-w>h<CR>")
+vim.keymap.set("n", "<C-k>", "<C-w>k<CR>")
+vim.keymap.set("n", "<C-j>", "<C-w>j<CR>")
+
+-- Buffers
+vim.keymap.set("n", "<leader>c", "<cmd>BufferDelete<CR>")
+vim.keymap.set("n", "<S-l>", "<cmd>BufferNext<CR>")
+vim.keymap.set("n", "<S-h>", "<cmd>BufferPrevious<CR>")
+vim.keymap.set("n", "<leader>bl", "<cmd>BufferCloseBuffersRight<CR>")
+vim.keymap.set("n", "<leader>bh", "<cmd>BufferCloseBuffersLeft<CR>")
+
+-- Drawer
+vim.keymap.set("n", "<leader>e", "<cmd>NeoTreeFocusToggle<CR>")
+
+-- git
+vim.keymap.set("n", "<leader>gb", "<cmd>GitBlameToggle<CR>")
+vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>")
+
+
+
+
+
+
 -- totally not stolen remaps
 
 -- move highlights
@@ -41,9 +66,11 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- format
-vim.keymap.set("n", "<leader>f", function()
-    vim.lsp.buf.format()
+vim.keymap.set("n", "<leader>F", function()
+  vim.lsp.buf.format()
 end)
+
+vim.keymap.set("n", "<leader>l", "<cmd>Prettier<CR>")
 
 -- search and replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
