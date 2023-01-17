@@ -59,7 +59,8 @@ return require('packer').startup(function(use)
       requires = { "kyazdani42/nvim-web-devicons", opt = true }
   })
 
-  -- install without yarn or npm
+  use'terrortylor/nvim-comment',
+
   use({
       "iamcco/markdown-preview.nvim",
       run = function() vim.fn["mkdp#util#install"]() end,
