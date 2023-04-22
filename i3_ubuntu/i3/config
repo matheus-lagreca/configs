@@ -1,0 +1,256 @@
+# set modifier inverted
+# Mod1 = alt
+# Mod4 = super
+# Super + Shift + R = Reload
+set $super Mod1
+set $alt Mod4
+
+### polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+### Wallpaper ###
+# pywal
+exec_always wal -q -i ~/Pictures/wallpapers/main/
+
+### Applications: ###
+
+set $terminalEmulator /usr/bin/alacritty
+set $browser firefox
+set $fileManager /usr/bin/thunar
+# set $preferredMailClient /usr/bin/geary
+# set $preferredTextEditor /usr/bin/geany
+set $screenCaptureTool /usr/bin/flameshot gui
+
+###########################################
+### Commonly Used Application Keybinds: ###
+###########################################
+
+# Browser
+bindsym $super+w exec $browser -e -p mconf;focus
+bindsym $super+Shift+w exec $browser -e -p main;focus
+bindsym $alt+Shift+w exec $browser -e -p extra;focus
+
+bindsym $super+Shift+e exec $fileManager;focus
+
+bindsym $super+e exec --no-startup-id $terminalEmulator -e ranger
+
+### Screen Capturing & Print Screen: ###
+
+bindsym $super+F9 exec $screenCaptureTool
+bindsym Print exec --no-startup-id $screenCaptureTool
+
+### Start a Terminal Emulator: ###
+bindsym $super+Return exec $terminalEmulator
+
+# set font
+font pango:System San Francisco Display 10
+
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
+
+#autostart
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+
+### Application binds ###
+# start dmenu (a program launcher)
+bindsym $super+Shift+d exec --no-startup-id dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
+bindsym $super+d exec rofi -show run lines 3 -eh 2 -width 100 -padding 800 -opacity 85 -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 10"
+
+### NOTEBOOK CONFIGS ###
+# Screen brightness controls
+bindsym $super+b exec --no-startup-id light -U 1
+bindsym $super+n exec --no-startup-id light -A 1
+bindsym $super+Ctrl+b exec --no-startup-id light -U 0.1
+bindsym $super+Ctrl+n exec --no-startup-id light -A 0.1
+bindsym $super+Shift+b exec --no-startup-id light -S 10
+bindsym $super+Shift+n exec --no-startup-id light -S 100
+
+# change language
+bindsym $super+p exec setxkbmap -layout us 
+bindsym $super+Shift+p exec setxkbmap -layout br
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# music control
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl prev
+bindsym XF86AudioPlay exec playerctl toggle
+bindsym XF86AudioStop exec playerctl stop
+
+# Print screen
+bindsym $super+Print --release exec --no-startup-id i3-scrot -w
+bindsym $super+Shift+Print --release exec --no-startup-id i3-scrot -s
+
+# kill focused window
+bindsym $super+q kill
+
+# change focus
+bindsym $super+h focus left
+bindsym $super+j focus down
+bindsym $super+k focus up
+bindsym $super+l focus right
+
+# move focused window
+bindsym $super+Shift+h move left
+bindsym $super+Shift+j move down
+bindsym $super+Shift+k move up
+bindsym $super+Shift+l move right
+
+# split toggle
+bindsym $super+v split toggle
+
+# change container layout split
+bindsym $super+s layout toggle split
+
+# enter fullscreen mode for the focused container
+bindsym $super+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $super+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $super+Shift+space focus mode_toggle
+
+# toggle sticky
+bindsym $super+Shift+s sticky toggle
+
+# fullscreen
+popup_during_fullscreen smart
+
+# audio
+bindsym $super+a exec --no-startup-id $terminalEmulator -t pamix -e pamix
+for_window [title="pamix"] floating enable, resize set 600 500, move position center;focus
+
+# bluetooth
+# bindsym $super+Shift+a exec --no-startup-id $terminalEmulator -t bluetuith -e bluetuith
+# for_window [title="bluetuith"] floating enable, resize set 600 500, move position center;focus
+
+# calendar
+bindsym $super+c exec --no-startup-id $terminalEmulator -t khal -e khal interactive
+for_window [title="khal"] floating enable, resize set 600 500, move position center;focus
+
+# gpick
+bindsym $super+g exec --no-startup-id gpick
+# for_window [title="gpick"] floating enable, resize set 600 500, move position right;focus
+
+# move the currently focused window to the scratchpad
+bindsym $super+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $super+minus scratchpad show
+
+# switch to workspace
+bindsym $super+1 workspace 1
+bindsym $super+2 workspace 2
+bindsym $super+3 workspace 3
+bindsym $super+4 workspace 4
+bindsym $super+5 workspace 5
+bindsym $super+6 workspace 6
+bindsym $super+7 workspace 7
+bindsym $super+8 workspace 8
+bindsym $super+9 workspace 9
+bindsym $super+0 workspace 10
+
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace 1
+bindsym $super+Shift+2 move container to workspace 2
+bindsym $super+Shift+3 move container to workspace 3
+bindsym $super+Shift+4 move container to workspace 4
+bindsym $super+Shift+5 move container to workspace 5
+bindsym $super+Shift+6 move container to workspace 6
+bindsym $super+Shift+7 move container to workspace 7
+bindsym $super+Shift+8 move container to workspace 8
+bindsym $super+Shift+9 move container to workspace 9
+bindsym $super+Shift+0 move container to workspace 10
+
+# Move to workspace with focused container
+bindsym $alt+Shift+1 move container to workspace 1; workspace 1
+bindsym $alt+Shift+2 move container to workspace 2; workspace 2
+bindsym $alt+Shift+3 move container to workspace 3; workspace 3
+bindsym $alt+Shift+4 move container to workspace 4; workspace 4
+bindsym $alt+Shift+5 move container to workspace 5; workspace 5
+bindsym $alt+Shift+6 move container to workspace 6; workspace 6
+bindsym $alt+Shift+7 move container to workspace 7; workspace 7
+bindsym $alt+Shift+8 move container to workspace 8; workspace 8
+bindsym $alt+Shift+9 move container to workspace 9; workspace 9
+bindsym $alt+Shift+0 move container to workspace 10; workspace 10
+
+# Move workspace between monitors
+bindsym $super+Ctrl+greater move workspace to output right
+bindsym $super+Ctrl+less move workspace to output left
+
+
+# reload the configuration file
+# bindsym $super+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $super+Shift+r exec ~/.config/i3/scripts/restart-i3.sh
+
+# change borders
+bindsym $super+u border none
+bindsym $super+y border pixel 1
+
+#############################
+### settings for i3-gaps: ###
+#############################
+#...
+
+# resize
+bindsym $super+Shift+y resize shrink width 10 px or 10 ppt
+bindsym $super+Shift+u resize grow height 10 px or 10 ppt
+bindsym $super+Shift+i resize shrink height 10 px or 10 ppt
+bindsym $super+Shift+o resize grow width 10 px or 10 ppt
+
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $c1 i3wm.color1 #f0f0f0
+set_from_resource $c2 i3wm.color3 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+hide_edge_borders both
+default_border pixel 1
+default_floating_border pixel 1
+
+# Set shut down, restart and locking features
+
+# Lock
+bindsym $super+Shift+x exec ~/.config/i3/scripts/lock.sh
+
+# this doesnt work on the current ubuntu version 4.20.1
+# but it should work on 4.22
+
+# bindsym $super+p mode "$mode_system"
+# set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+# mode "$mode_system" {
+#     bindsym l exec --no-startup-id i3lock, mode "default"
+#     bindsym s exec --no-startup-id i3suspend, mode "default"
+#     bindsym u exec --no-startup-id i3switch_user, mode "default"
+#     bindsym e exec --no-startup-id i3logout, mode "default"
+#     bindsym h exec --no-startup-id i3hibernate, mode "default"
+#     bindsym r exec --no-startup-id i3reboot, mode "default"
+#     bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+#
+#     # exit system mode: "Enter" or "Escape"
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+
+# exec_always compton -f
+exec_always picom -f
