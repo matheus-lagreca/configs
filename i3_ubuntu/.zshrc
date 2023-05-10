@@ -11,7 +11,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git)
+plugins=(git
+  rake
+  ruby)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -31,16 +33,22 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # source /usr/share/nvm/init-nvm.sh
 
-# my exports
+##################
+### my exports ###
+##################
 export EDITOR=nvim
 export ANDROID_SDK_ROOT='/home/matheus/Android/Sdk'
 
-# my aliases
-alias zcat='cat ~/.zshrc'
-alias znvim='nvim ~/.zshrc'
-alias zsource='source ~/.zshrc'
+##################
+### my aliases ###
+##################
 
-# config files
+### zsh ###
+alias zc='cat ~/.zshrc'
+alias zn='nvim ~/.zshrc'
+alias zs='source ~/.zshrc'
+
+### config files ###
 alias fixi3='nvim ~/.config/i3/config'
 alias fixnvim='nvim ~/.config/nvim/'
 alias fixpolybar='nvim ~/.config/polybar/'
@@ -57,24 +65,32 @@ alias singleExternal='xrandr --output HDMI-1 --off --output eDP-1 --auto'
 
 alias w='wal -q -i ~/Pictures/wallpapers/'
 
+### Tmux(xifier) ###
 alias ta='tmuxifier s'
 alias ts='tmuxifier ns'
 alias te='tmuxifier es'
 alias tl='tmuxifier l'
+alias tls='tmux ls'
 
+### ssh ###
 alias sshfix='eval $(ssh-agent); ssh-add ~/.ssh/git'
 
-alias ya='npm run android'
-alias yi='npm install'
+### npm ###
+alias na='npm run android'
+alias ni='npm install'
+alias nci='rm -rf node_modules/; npm install'
 
-alias emu='~/Android/Sdk/emulator/emulator -avd Pixel_4_API_30 -no-audio'
-alias emu='~/Android/Sdk/emulator/emulator -list-avds'
+### android emulator ###
+alias emu='~/Android/Sdk/emulator/emulator -avd Pixel_4_API_30'
+alias emuNoAudio='~/Android/Sdk/emulator/emulator -avd Pixel_4_API_30 -no-audio'
+alias emuList='~/Android/Sdk/emulator/emulator -list-avds'
 
-# rails
+### rails/docker ###
 alias dc='docker compose'
 alias dcu='dc up'
 alias dcr='dc run --rm'
 alias dcb='dc build'
+alias byebug='dcr --service-ports'
 alias dcrprep='dcr dev rake db:prepare'
 alias dcrpop='dcr dev rake db:populate'
 alias dcrdrop='dcr dev rake db:drop'
@@ -85,12 +101,14 @@ alias zerar='dcreset; dcb dev; dcrprep; dcrpop'
 # TODO: make it into a function with selections
 alias rmtout='rdesktop -g 1400x900 -P -z -x l -r sound:off -u <USER> <IP>'
 
-# Cargo packages
+### Cargo packages ###
 alias ls='exa --icons -x'
 alias ll='exa --icons -x -a'
 alias cat='bat'
 
-# functions
+#################
+### functions ###
+#################
 
 # Github
 # git clone 
@@ -104,6 +122,5 @@ ghgcssh() {
 
 # Run neofetch
 neofetch
-
-# test using starship instead of oh-my-zsh
 eval "$(starship init zsh)"
+

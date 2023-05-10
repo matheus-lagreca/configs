@@ -64,6 +64,8 @@ bindsym $super+d exec rofi -show run lines 3 -eh 2 -width 100 -padding 800 -opac
 bindsym $super+b exec --no-startup-id light -U 1
 bindsym $super+n exec --no-startup-id light -A 1
 bindsym $super+Ctrl+b exec --no-startup-id light -U 0.1
+bindsym $alt+Ctrl+b exec --no-startup-id light -U 0.01
+bindsym $alt+Ctrl+n exec --no-startup-id light -A 0.01
 bindsym $super+Ctrl+n exec --no-startup-id light -A 0.1
 bindsym $super+Shift+b exec --no-startup-id light -S 10
 bindsym $super+Shift+n exec --no-startup-id light -S 100
@@ -194,6 +196,8 @@ bindsym $super+Ctrl+less move workspace to output left
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $super+Shift+r exec ~/.config/i3/scripts/restart-i3.sh
+bindsym $alt+Shift+r exec ~/.config/i3/scripts/restart-i3.sh single
+
 
 # change borders
 bindsym $super+u border none

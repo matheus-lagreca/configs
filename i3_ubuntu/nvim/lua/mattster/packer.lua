@@ -3,28 +3,26 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+
+  -- telescope
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    -- or                            , branch = '0.1.x',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
+
+  -- treesitter
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
 
-  use('mbbill/undotree')
   -- marks
   use 'theprimeagen/harpoon'
 
   -- qol
+  use('MunifTanjim/prettier.nvim')
+  use 'christoomey/vim-tmux-navigator'
   use 'unblevable/quick-scope'
   use 'tpope/vim-surround'
-  use 'tpope/vim-fugitive'
-  use 'kdheepak/lazygit.nvim'
-
-  -- themes
-  use 'folke/tokyonight.nvim'
-  use 'dylanaraps/wal.vim'
-
+  use('mbbill/undotree')
   use {
     "folke/which-key.nvim",
     config = function()
@@ -32,9 +30,33 @@ return require('packer').startup(function(use)
     end
   }
 
-  use('neovim/nvim-lspconfig')
-  use('MunifTanjim/prettier.nvim')
-  use('jose-elias-alvarez/null-ls.nvim')
+  -- extra
+  use("laytan/cloak.nvim")
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+  use 'eandrju/cellular-automaton.nvim'
+
+  -- copilot
+  use 'github/copilot.vim'
+
+  -- git
+  use 'f-person/git-blame.nvim'
+  use 'tpope/vim-fugitive'
+  use 'kdheepak/lazygit.nvim'
+
+  -- themes
+  use 'folke/tokyonight.nvim'
+  use 'dylanaraps/wal.vim'
+  use 'eandrju/cellular-automaton.nvim'
+
 
   -- tree
   use {
@@ -49,7 +71,6 @@ return require('packer').startup(function(use)
   --buffers
   use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
 
-  use 'f-person/git-blame.nvim'
   use({
     "NTBBloodbath/galaxyline.nvim",
     -- your statusline
@@ -69,12 +90,13 @@ return require('packer').startup(function(use)
 
   use 'terrortylor/nvim-comment'
 
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
-
-  use 'simrat39/rust-tools.nvim'
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require 'alpha'.setup(require 'alpha.themes.startify'.config)
+    end
+  }
 
   -- Debugging
   use 'nvim-lua/plenary.nvim'
@@ -102,4 +124,15 @@ return require('packer').startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   }
+  use('neovim/nvim-lspconfig')
+  use('jose-elias-alvarez/null-ls.nvim')
+
+  -- markdown
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
+  -- rust
+  use 'simrat39/rust-tools.nvim'
 end)
