@@ -71,8 +71,8 @@ bindsym $super+Shift+b exec --no-startup-id light -S 10
 bindsym $super+Shift+n exec --no-startup-id light -S 100
 
 # change language
-bindsym $super+p exec setxkbmap -layout us 
-bindsym $super+Shift+p exec setxkbmap -layout br
+bindsym $alt+p exec setxkbmap -layout us 
+bindsym $alt+Shift+p exec setxkbmap -layout br
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
