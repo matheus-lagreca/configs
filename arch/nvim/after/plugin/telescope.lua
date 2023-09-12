@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fF', builtin.git_files, {})
@@ -17,7 +18,7 @@ require('telescope').load_extension('git_worktree')
 require('telescope').load_extension('live_grep_args')
 require('telescope').load_extension('undo')
 require('telescope').load_extension('neoclip')
--- TODO: learn how quick lists work
+
 -- config
 local actions = require('telescope.actions')
 local telescope = require('telescope')

@@ -83,6 +83,13 @@ return require('packer').startup(function(use)
     }
   }
 
+  use {
+    'VonHeikemen/fine-cmdline.nvim',
+    requires = {
+      { 'MunifTanjim/nui.nvim' }
+    }
+  }
+
   -- buffers
   use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
 

@@ -70,13 +70,21 @@ vim.keymap.set("n", "<leader>F", function()
 end)
 
 -- search and replace
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- make file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- run file
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
+
+-- quickfix
+vim.keymap.set("n", "<C-A-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<C-A-k>", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<C-A-h>", "<cmd>colder<CR>")
+vim.keymap.set("n", "<C-A-l>", "<cmd>cnewer<CR>")
+vim.keymap.set("n", "<C-A-e>", "<cmd>copen<CR>")
+vim.keymap.set("n", "<C-A-c>", "<cmd>cclose<CR>")
 
 --vim.keymap.set("", "", "")
 
@@ -91,6 +99,7 @@ wk.register(
     q = "Quit",
     w = "Write",
     x = "make executable",
+    S = "Search and replace",
 
     ['<leader>'] = {
       name = "Leader",
