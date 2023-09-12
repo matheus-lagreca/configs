@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
@@ -7,7 +8,21 @@ return require('packer').startup(function(use)
   -- telescope
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { { 'nvim-lua/plenary.nvim' } }
+    requires = {
+      {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-live-grep-args.nvim',
+        'debugloop/telescope-undo.nvim',
+        -- 'aaronhallaert/advanced-git-search.nvim'
+      }
+    }
+  }
+
+  use {
+    "AckslD/nvim-neoclip.lua",
+    config = function()
+      require('neoclip').setup()
+    end,
   }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run =
   'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
@@ -34,8 +49,10 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- extra
+  -- cloak
   use("laytan/cloak.nvim")
+
+  -- zen mode
   use {
     "folke/zen-mode.nvim",
     config = function()
@@ -46,13 +63,15 @@ return require('packer').startup(function(use)
   -- copilot
   use 'github/copilot.vim'
 
-  -- git
-  use 'f-person/git-blame.nvim'
+  -- tpope
   use 'tpope/vim-fugitive'
+
+  -- lazy
   use 'kdheepak/lazygit.nvim'
 
   -- themes
   use 'folke/tokyonight.nvim'
+  use "rebelot/kanagawa.nvim"
 
   -- tree
   use {
@@ -64,9 +83,10 @@ return require('packer').startup(function(use)
     }
   }
 
-  --buffers
+  -- buffers
   use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
 
+  -- statusline
   use({
     "NTBBloodbath/galaxyline.nvim",
     -- your statusline
@@ -77,8 +97,10 @@ return require('packer').startup(function(use)
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
   })
 
+  -- comments
   use 'terrortylor/nvim-comment'
 
+  -- start screen
   use {
     'goolord/alpha-nvim',
     requires = { 'nvim-tree/nvim-web-devicons' },
@@ -87,8 +109,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- Debugging
-  use 'nvim-lua/plenary.nvim'
+  -- ?
   use 'mfussenegger/nvim-dap'
 
   -- LSP
@@ -118,6 +139,7 @@ return require('packer').startup(function(use)
 
   -- rust
   use 'simrat39/rust-tools.nvim'
+
+  -- wiki
   use 'vimwiki/vimwiki'
-  use "rebelot/kanagawa.nvim"
 end)

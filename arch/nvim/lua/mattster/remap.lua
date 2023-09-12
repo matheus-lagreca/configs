@@ -1,13 +1,14 @@
+---@diagnostic disable: undefined-global
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>fv", vim.cmd.Ex)
 
 -- Custom Binds
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>")
 vim.keymap.set("n", "<leader>q", "<cmd>q!<CR>")
 
 -- Packer/nvim
-vim.keymap.set("n", "<leader>oS", "<cmd>PackerSync<CR>")
-vim.keymap.set("n", "<leader>os", "<cmd>so<CR>")
+vim.keymap.set("n", "<leader>pS", "<cmd>PackerSync<CR>")
+vim.keymap.set("n", "<leader>ps", "<cmd>so<CR>")
 
 -- Windows
 vim.keymap.set("n", "<C-h>", "<C-w>h<CR>")
@@ -83,6 +84,9 @@ vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
 local wk = require("which-key")
 wk.register(
   {
+    f = {
+      v = "Ex",
+    },
     F = "Format",
     q = "Quit",
     w = "Write",
@@ -97,7 +101,8 @@ wk.register(
     d = "which_key_ignore",
     y = "which_key_ignore",
     Y = "which_key_ignore",
+    p = "which_key_ignore",
     ['_'] = "which_key_ignore"
   },
- { prefix = "<leader>" }
+  { prefix = "<leader>" }
 )

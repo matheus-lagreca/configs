@@ -11,9 +11,9 @@ vim.keymap.set('n', '<leader>l', function() ui.nav_file(4) end)
 
 local wk = require('which-key')
 wk.register({
-  a = {'Harpoon add'},
+  a = { 'Harpoon add' },
   h = "which_key_ignore",
   j = "which_key_ignore",
   k = "which_key_ignore",
   l = "which_key_ignore",
-}, {prefix = '<leader>'})
+}, { prefix = '<leader>' })
