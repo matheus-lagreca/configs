@@ -17,6 +17,6 @@ vim.keymap.set('n', '<leader>zc', '<cmd>ToggleCloak<cr>')
 local wk = require('which-key')
 wk.register({
   z = {
-    c = { '<cmd>ToggleCloak<cr>', 'cloak' },
+    c = { '<cmd>CloakToggle<cr>', 'cloak' },
   },
 }, { prefix = '<leader>' })

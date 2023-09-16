@@ -62,3 +62,7 @@ lsp.format_on_save({
 })
 
 lsp.setup()
+
+local null_ls = require('null-ls')
+local sources = { null_ls.builtins.diagnostics.gdlint }
+local sources = { null_ls.builtins.formatting.gdformat }

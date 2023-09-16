@@ -42,23 +42,18 @@ return require('packer').startup(function(use)
   use 'unblevable/quick-scope'
   use 'tpope/vim-surround'
   use('mbbill/undotree')
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup {}
-    end
-  }
+
+  -- folke
+  use 'folke/tokyonight.nvim'
+  use 'folke/which-key.nvim'
+  use 'folke/zen-mode.nvim'
+  use 'folke/twilight.nvim'
+
+  -- notify
+  use 'rcarriga/nvim-notify'
 
   -- cloak
-  use("laytan/cloak.nvim")
-
-  -- zen mode
-  use {
-    "folke/zen-mode.nvim",
-    config = function()
-      require("zen-mode").setup {}
-    end
-  }
+  use 'laytan/cloak.nvim'
 
   -- copilot
   use 'github/copilot.vim'
@@ -70,7 +65,6 @@ return require('packer').startup(function(use)
   use 'kdheepak/lazygit.nvim'
 
   -- themes
-  use 'folke/tokyonight.nvim'
   use "rebelot/kanagawa.nvim"
 
   -- tree
@@ -149,4 +143,20 @@ return require('packer').startup(function(use)
 
   -- wiki
   use 'vimwiki/vimwiki'
+
+  -- godot
+  use('lommix/godot.nvim')
+
+  -- git
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require "octo".setup()
+    end
+  }
 end)

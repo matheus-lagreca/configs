@@ -9,7 +9,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 -- undotree can undo from past
 vim.opt.swapfile = false
