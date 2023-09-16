@@ -16,3 +16,11 @@ require('fine-cmdline').setup({
     },
   },
 })
+
+local wk = require('which-key')
+wk.register({
+  s = {
+    name = 'Search',
+    q = { 'vim' },
+  },
+}, { prefix = '<leader>' })
