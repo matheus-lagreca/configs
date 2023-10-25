@@ -79,7 +79,6 @@ alias cat='bat'
 
 ### ssh ###
 alias note='ssh notesv@192.168.4.9'
-alias terrariasv='ssh terraria@192.168.4.9'
 
 ### neovim ###
 alias gvim='nvim --listen ~/.cache/nvim/godot.pipe .'
