@@ -1,5 +1,4 @@
 ### zsh ###
-#TODO: update
 alias zc='z ~/.zsh/; nvim config.zsh'
 alias zn='nvim ~/.zshrc'
 alias zs='source ~/.zshrc'

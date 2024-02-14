@@ -1,1 +1,1 @@
-# export PATH="/bin/.local/scripts:$PATH"
+export PATH="/bin/.local/scripts:$PATH"

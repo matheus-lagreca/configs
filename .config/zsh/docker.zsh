@@ -8,6 +8,8 @@ alias dcr='dc run --rm'
 alias dcb='dc build'
 alias byebug='dcr --service-ports'
 
+alias dscript='~/scripts/docker/dockermenu.sh'
+
 # docker rails
 dcrc () {
   dcr $1 rails c
@@ -47,4 +49,16 @@ dreset() {
   dcrprep $1;
   dcrpop $1;
   dcu $1;
+}
+
+zeraTriades () {
+  dc down;
+  docker image rm triades-portal-backend-api:latest;
+  docker system prune;
+  dcb api;
+  dcrprep api;
+  dcrmig api;
+  dcrpop api;
+  curl -d "full reset completed, running" notesv.lan/coffee
+  dcu api;
 }
